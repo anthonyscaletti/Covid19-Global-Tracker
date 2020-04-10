@@ -20,3 +20,12 @@ img {
     left: 1%;
     transform: translateY(-50%);
 }
+
+.navSettings {
+    width: 3%;
+    height: calc(0.03 * 100vw);
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-120%, -50%);
+}

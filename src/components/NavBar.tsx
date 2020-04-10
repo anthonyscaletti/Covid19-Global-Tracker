@@ -1,5 +1,7 @@
-import React from 'react'
+import React from 'react';
+
 import '../styles/navBar.css';
+import Settings from './Settings';
 
 class NavBar extends React.PureComponent {
     renderLogo = () => {
@@ -12,8 +14,8 @@ class NavBar extends React.PureComponent {
 
     renderSettings = () => {
         return (
-            <div className="nav">
-                <img src="../../settingsIcon.png" alt="Settings"/>
+            <div className="navSettings">
+                <Settings />
             </div>
         );
     }
@@ -22,6 +24,7 @@ class NavBar extends React.PureComponent {
         return (
             <div className="navBar">
                 {this.renderLogo()}
+                {this.renderSettings()}
             </div>
         );
     }
