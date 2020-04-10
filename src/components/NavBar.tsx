@@ -5,7 +5,15 @@ class NavBar extends React.PureComponent {
     renderLogo = () => {
         return (
             <div className="navLogo">
-                <img className="navLogoImg" src="../../BrandLogo1000x1000.png" alt="Logo"/>
+                <img src="../../BrandLogo1000x1000.png" alt="Logo"/>
+            </div>
+        );
+    }
+
+    renderSettings = () => {
+        return (
+            <div className="nav">
+                <img src="../../settingsIcon.png" alt="Settings"/>
             </div>
         );
     }
