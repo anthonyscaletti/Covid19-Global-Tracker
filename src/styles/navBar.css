@@ -14,7 +14,7 @@ img {
 
 .navLogo {
     width: 3%;
-    height: calc(0.03 * 100vw);
+    height: 60%;
     position: absolute;
     top: 50%;
     left: 1%;
@@ -23,7 +23,7 @@ img {
 
 .navSettings {
     width: 3%;
-    height: calc(0.03 * 100vw);
+    height: 60%;
     position: absolute;
     top: 50%;
     left: 100%;
