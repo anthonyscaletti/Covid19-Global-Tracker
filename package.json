@@ -4,7 +4,11 @@
   "description": "This web app tracks all Covid19 cases globally in real time, while providing trending analysis on a global and country scale.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bundle": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --mode development --open --hot",
+    "build": "webpack --mode production",
+    "check-types": "tsc"
   },
   "repository": {
     "type": "git",
@@ -37,6 +41,7 @@
     "tslint-immutable": "^6.0.1",
     "typescript": "^3.8.3",
     "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   }
 }
