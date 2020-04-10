@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index',
@@ -11,6 +12,24 @@ module.exports = {
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
+  },
+
+  devServer: {
+    contentBase: "./dist",
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    port: 3000,
+    headers: {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT, DELETE, PATCH, OPTIONS, UPGRADE",
+        "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Origin": "*"
+    },
+    overlay: {
+        warnings: false,
+        errors: true
+    }
   },
 
   module: {
@@ -32,6 +51,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
-    })
-  ]
+    }),
+    new CopyPlugin([{
+      from: './static/',
+      to: path.join(__dirname, '/dist')
+    }])]
 };
