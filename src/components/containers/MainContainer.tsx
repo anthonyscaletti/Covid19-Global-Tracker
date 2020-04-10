@@ -1,12 +1,13 @@
 import React from 'react';
 
 import '../../styles/main.css';
+import NavBar from '../NavBar'
 
-class MainContainer extends React.Component {
+class MainContainer extends React.PureComponent {
     render() {
         return (
             <div className="mainContainer">
-                <h1>Main Container</h1>
+                <NavBar />
             </div>
         );
     }
