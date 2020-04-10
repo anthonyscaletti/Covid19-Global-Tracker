@@ -1,0 +1,42 @@
+{
+  "name": "covid19-global-tracker",
+  "version": "1.0.0",
+  "description": "This web app tracks all Covid19 cases globally in real time, while providing trending analysis on a global and country scale.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthonyscaletti/Covid19-Global-Tracker.git"
+  },
+  "author": "Anthony Scaletti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anthonyscaletti/Covid19-Global-Tracker/issues"
+  },
+  "homepage": "https://github.com/anthonyscaletti/Covid19-Global-Tracker#readme",
+  "dependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@babel/preset-typescript": "^7.9.0",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.5.2",
+    "html-webpack-plugin": "^4.2.0",
+    "style-loader": "^1.1.3",
+    "tslint": "^6.1.1",
+    "tslint-immutable": "^6.0.1",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
