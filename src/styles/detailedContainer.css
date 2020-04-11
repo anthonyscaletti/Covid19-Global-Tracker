@@ -3,26 +3,27 @@
     padding: 0;
 }
 
-.summaryContainer {
-    width: 20%;
+.detailedContainer {
+    width: 75%;
     height: 80vh;
     margin-top: 2%;
+    margin-left: 5%;
     background-color: #ebe8e6;
     border-radius: 0.5rem;
     box-shadow: 0 0.1rem 0.1rem 0.1rem grey;
     text-align: center;
 }
 
-.summaryHeader {
-    padding-top: 5%;
+.detailedHeader {
+    padding-top: 1.33%;
 }
 
-.summaryTitle {
+.detailedTitle {
     color: #505050;
     letter-spacing: 0.25rem;
 }
 
-.summaryLine {
+.detailedLine {
     width: 90%;
-    margin: 3% 5% 0 5%;
+    margin: 0.8% 5% 0 5%;
 }

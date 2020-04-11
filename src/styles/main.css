@@ -3,11 +3,16 @@
     padding: 0;
 }
 
+h1, h2, h3, h4, h5 {
+    font-family: 'Lato';
+}
+
 .mainContainer {
     height: 100%;
     margin: 0 0.5% 0 0.5%;
 }
 
-h1, h2, h3, h4, h5 {
-    font-family: 'Lato';
+.panelContainer {
+    display: flex;
+    flex-direction: row;
 }
