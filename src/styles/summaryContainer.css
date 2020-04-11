@@ -10,4 +10,18 @@
     background-color: #ebe8e6;
     border-radius: 0.5rem;
     box-shadow: 0 0.1rem 0.1rem 0.1rem grey;
+    text-align: center;
+}
+
+.summaryHeader {
+    padding-top: 5%;
+}
+
+.summaryTitle {
+    color: #505050;
+}
+
+.summaryLine {
+    width: 90%;
+    margin: 3% 5% 0 5%;
 }
