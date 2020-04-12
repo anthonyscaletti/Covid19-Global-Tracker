@@ -25,10 +25,10 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
             <>
                 {this.props.countries && this.props.countries.map((x: ICountryData) => 
                     <CountryNode 
-                        key={x.CountryCode}
-                        country={x.Country}
-                        countryCode={x.CountryCode}
-                        totalConfirmed={x.TotalConfirmed}
+                        key={x.code}
+                        country={x.name}
+                        countryCode={x.code}
+                        value={x.confirmed}
                     />
                 )}
             </>

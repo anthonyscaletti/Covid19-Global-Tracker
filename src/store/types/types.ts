@@ -9,7 +9,7 @@ export interface IAppState {
 }
 
 export interface ISummaryState {
-    countries: ICountryData[],
+    countries: ICountryData[]
 }
 
 export interface IDetailedState {
@@ -17,12 +17,27 @@ export interface IDetailedState {
 }
 
 export interface ICountryData {
-    Country: string,
-    CountryCode: string,
-    TotalConfirmed: number,
-    NewConfirmed: number,
-    NewDeaths: number,
-    TotalDeaths: number,
-    NewRecovered: number,
-    TotalRecovered: number,
+    name: string,
+    code: string,
+    population: number,
+    updatedAt: Date,
+    todayDeaths: number,
+    todayConfirmed: number,
+    deaths: number,
+    confirmed: number,
+    recovered: number,
+    critical: number,
+    deathRate: number,
+    recoveryRate: number,
+    casesPerMillionPop: number,
+    timeline: ICountryData[]
+}
+
+export interface ICountrySummaryData {
+    name: string,
+    code: string,
+    deaths: number,
+    confirmed: number,
+    recovered: number,
+    critical: number
 }
