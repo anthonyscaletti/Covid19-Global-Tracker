@@ -7,7 +7,7 @@ export const getGlobalSummary = () => {
         .then(res => {
             const action: IAction = {
                 type: "GET_GLOBAL_SUMMARY",
-                payload: res.Countries || []
+                payload: [{...res.Global, Country: "Earth"}, ...res.Countries] || []
             };
             dispatch(action);
         })
