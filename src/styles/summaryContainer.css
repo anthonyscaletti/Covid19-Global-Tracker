@@ -26,3 +26,10 @@
     width: 90%;
     margin: 3% 5% 0 5%;
 }
+
+.nodeContainer {
+    padding: 5% 0 0 5%;
+    height: 65vh;
+    text-align: left!important;
+    overflow-y: scroll;
+}
