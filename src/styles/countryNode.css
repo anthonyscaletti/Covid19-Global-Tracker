@@ -5,4 +5,9 @@
 
 .countryNode {
     padding-bottom: 3%;
+    cursor: pointer;
+}
+
+.countryNode:hover {
+    background-color: silver;
 }

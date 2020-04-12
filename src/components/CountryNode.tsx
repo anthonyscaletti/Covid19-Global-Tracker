@@ -11,7 +11,7 @@ export interface OwnProps {
 const CountryNode = (props: OwnProps) => {
     return (
         <div className="countryNode">
-            <h5>&#x25C9;&nbsp;{props.country}:&nbsp;&nbsp;{props.totalConfirmed}</h5>
+            <h5>&#x25C9;&nbsp;&nbsp;{props.country}:<span style={{float: "right", marginRight: "5%"}}>{props.totalConfirmed}</span></h5>
         </div>
     );
 }
