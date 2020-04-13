@@ -73,16 +73,17 @@ const getModeledGlobalData = (res: any) => {
     }
 
     const { confirmedTimeline, recoveredTimeline, deathTimeline } = getTimelines(res.data);
-    
+    const data = res.data[res.data.length - 1];
+
     return {
         name: "Earth",
         code: "Earth",
-        updatedAt: new Date(res.data[0].updated_at),
-        todayDeaths: res.data[0].new_deaths,
-        todayConfirmed: res.data[0].new_confirmed,
-        deaths: res.data[0].deaths,
-        confirmed: res.data[0].confirmed,
-        recovered: res.data[0].recovered,
+        updatedAt: new Date(data.updated_at),
+        todayDeaths: data.new_deaths,
+        todayConfirmed: data.new_confirmed,
+        deaths: data.deaths,
+        confirmed: data.confirmed,
+        recovered: data.recovered,
         confirmedTimeline,
         recoveredTimeline,
         deathTimeline
