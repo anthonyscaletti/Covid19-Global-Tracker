@@ -11,7 +11,11 @@ const covidSettingsReducer = (state: ISettingsState = initState, action: IAction
     switch(action.type) {
         case "SET_TIME_RANGE":
             return {
-                timeRange: action.payload
+                ...state,
+                timeRange: {
+                    start: action.payload.start,
+                    end: action.payload.end
+                }
             };
         default:
             return state;
