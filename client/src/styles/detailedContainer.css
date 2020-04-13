@@ -35,3 +35,9 @@
     background-color: white;
     border-radius: 0.5rem;
 }
+
+.labelContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
