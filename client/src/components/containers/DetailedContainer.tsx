@@ -19,8 +19,13 @@ import StatElement from '../StatElement';
 
 class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
     componentDidMount() {
-        //this.props.getCountryDetails();
         this.props.getGlobalDetails();
+    }
+
+    componentDidUpdate() {
+        if (this.props.selectedCountryCode) {
+            this.props.getCountryDetails(this.props.selectedCountryCode);
+        }
     }
 
     renderDetailedHeader = () => {
@@ -132,17 +137,19 @@ interface IProps  {
     country: ICountryData,
     getCountryDetails: any,
     getGlobalDetails: any,
+    selectedCountryCode: string
 }
 
 const mapStateToProps = (state: IAppState) => {
     return {
-        country: state.detailed.country
+        country: state.detailed.country,
+        selectedCountryCode: state.summary.selectedCountryCode
     };
 }
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        getCountryDetails: () => dispatch(getCountryDetails("ca")),
+        getCountryDetails: (countryCode) => dispatch(getCountryDetails(countryCode)),
         getGlobalDetails: () => dispatch(getGlobalDetails())
     }
 }

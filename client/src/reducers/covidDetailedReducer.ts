@@ -1,7 +1,7 @@
 import { IAction, IDetailedState, ICountryData } from '../store/types/types';
 
 const initState = {
-    country: {} as ICountryData
+    country: {} as ICountryData,
 };
 
 const covidDetailedReducer = (state: IDetailedState = initState, action: IAction) => {

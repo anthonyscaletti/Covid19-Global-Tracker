@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import '../../styles/summaryContainer.css';
-import { getGlobalSummary } from '../../actions/covidSummaryActions';
+import { getGlobalSummary, setSelectedCountryCode } from '../../actions/covidSummaryActions';
 import { ICountrySummaryData, ICountryData, ISummaryState, IAppState } from '../../store/types/types';
 import CountryNode from '../CountryNode';
 
 class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
     componentDidMount() {
         this.props.getGlobalSummary();
+        this.props.setSelectedCountryCode("us"); //TEST ENTRY
     }
 
     renderSummaryHeader = () => {
@@ -49,18 +50,21 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
 
 interface IProps  {
     countries: ICountrySummaryData[],
-    getGlobalSummary: any
+    getGlobalSummary: any,
+    setSelectedCountryCode: any
 }
 
 const mapStateToProps = (state: IAppState) => {
     return {
-        countries: state.summary.countries
+        countries: state.summary.countries,
+        selectedCountryCode: state.summary.selectedCountryCode
     };
 }
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        getGlobalSummary: () => dispatch(getGlobalSummary())
+        getGlobalSummary: () => dispatch(getGlobalSummary()),
+        setSelectedCountryCode: (countryCode: string) => dispatch(setSelectedCountryCode(countryCode))
     }
 }
 

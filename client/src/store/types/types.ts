@@ -9,7 +9,8 @@ export interface IAppState {
 }
 
 export interface ISummaryState {
-    countries: ICountryData[]
+    countries: ICountryData[],
+    selectedCountryCode: string
 }
 
 export interface IDetailedState {

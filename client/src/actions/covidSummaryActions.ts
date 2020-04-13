@@ -20,6 +20,13 @@ export const getGlobalSummary = () => {
     }
 }
 
+export const setSelectedCountryCode = (countryCode: string) => {
+    return {
+        type: "SET_SELECTED_COUNTRY_CODE",
+        payload: countryCode
+    } as IAction;
+}
+
 const getModeledData = (res: any) => {
     if (!res.data) {
         return [] as ICountrySummaryData[]
