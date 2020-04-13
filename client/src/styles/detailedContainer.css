@@ -50,3 +50,22 @@
     background-color: white;
     border-radius: 0.5rem;
 }
+
+.statsHeader {   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.statsContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 1%;
+    letter-spacing: 0.1rem;
+}
+
+.statsSubContent {
+    width: 40%;
+    text-align: left;
+}

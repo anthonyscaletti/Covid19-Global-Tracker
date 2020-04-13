@@ -15,6 +15,7 @@ import {
     YAxis,
     LineSeries
  } from 'react-vis';
+import StatElement from '../StatElement';
 
 class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
     componentDidMount() {
@@ -69,6 +70,46 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
         );
     }
 
+    renderStatsContent = () => {
+        const deathRate = this.props.country.deathRate ? this.props.country.deathRate.toFixed(2) : 0;
+        const recoveryRate = this.props.country.recoveryRate ? this.props.country.recoveryRate.toFixed(2) : 0;
+
+        return (
+            <>
+                <div className="statsSubContent">
+                    <StatElement label="Country" value={this.props.country.name}/>
+                    <StatElement label="Population" value={this.props.country.population || 0}/>
+                    <StatElement label="Total Confirmed" value={this.props.country.confirmed || 0}/>
+                    <StatElement label="Total Recovered" value={this.props.country.recovered || 0}/>
+                    <StatElement label="Total Deaths" value={this.props.country.deaths || 0}/>
+                    <StatElement label="Cases Per Million Population" value={this.props.country.casesPerMillionPop || 0}/>
+                </div>
+                <div className="statsSubContent">
+                    <StatElement label="Today Confirmed" value={this.props.country.todayConfirmed || 0}/>
+                    <StatElement label="Today Deaths" value={this.props.country.todayDeaths || 0}/>
+                    <StatElement label="Critical" value={this.props.country.critical || 0}/>
+                    <StatElement label="Death Rate" value={deathRate}/>
+                    <StatElement label="Recovery Rate" value={recoveryRate}/>
+                </div>
+            </>
+        );
+    }
+
+    renderStatsTable = () => {
+        const updatedAt: Date = this.props.country.updatedAt ? this.props.country.updatedAt.toString() : "";
+        
+        return (
+            <>
+                <div className="statsHeader">
+                    <StatElement label="Last Updated" value={updatedAt}/>
+                </div>
+                <div className="statsContent">
+                    {this.renderStatsContent()}
+                </div>
+            </>
+        );
+    }
+
     render() {
         return (
             <div className="detailedContainer">
@@ -78,6 +119,7 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
                     {this.renderChartLabels()}
                 </div>
                 <div className="statsTable">
+                    {this.renderStatsTable()}
                 </div>
             </div>
         );
