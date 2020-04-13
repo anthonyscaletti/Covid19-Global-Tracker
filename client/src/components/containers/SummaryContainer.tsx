@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import '../../styles/summaryContainer.css';
 import { getGlobalSummary, setSelectedCountryCode } from '../../actions/covidSummaryActions';
-import { ICountrySummaryData, ICountryData, ISummaryState, IAppState, IAction } from '../../store/types/types';
+import { ICountrySummaryData, ICountryData, ISummaryState, IAppState } from '../../store/types/types';
 import CountryNode from '../CountryNode';
 
 class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
@@ -12,7 +12,12 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
     }
 
     countryNodeClick = (countryCode: string) => {
-        this.props.setSelectedCountryCode(countryCode);
+        if (countryCode === this.props.selectedCountryCode) {
+            this.props.setSelectedCountryCode("Earth");
+        }
+        else {
+            this.props.setSelectedCountryCode(countryCode);
+        }
     }
 
     renderSummaryHeader = () => {
@@ -20,6 +25,19 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
             <div className="summaryHeader">
                 <span className="summaryTitle"><h3>Global Confirmed</h3></span>
                 <hr className="summaryLine"/>
+            </div>
+        );
+    }
+
+    renderCustomFields = () => {
+        return (
+            <div className="customFields">
+                <div className="filterInput">
+                    <input className="filterInput" type="text" />
+                </div>
+                <div className="sortButton">
+                    <span className="sortText">Sort</span>
+                </div>
             </div>
         );
     }
@@ -34,6 +52,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
                         countryCode={x.code}
                         value={x.confirmed}
                         onClick={this.countryNodeClick}
+                        selectedCountryCode={this.props.selectedCountryCode}
                     />
                 )}
             </>
@@ -44,6 +63,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
         return (
             <div className="summaryContainer">
                 {this.renderSummaryHeader()}
+                {this.renderCustomFields()}
                 <div className="nodeContainer">
                     {this.renderCountries()}
                 </div>
@@ -54,6 +74,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
 
 interface IProps  {
     countries: ICountrySummaryData[],
+    selectedCountryCode: string,
     getGlobalSummary: Function,
     setSelectedCountryCode: Function
 }

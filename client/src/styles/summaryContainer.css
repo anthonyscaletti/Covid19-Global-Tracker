@@ -31,10 +31,59 @@
 .nodeContainer {
     padding: 5% 0 0 5%;
     margin: 2% 10% 0 6%;
-    height: 65vh;
+    height: 60vh;
     width: 84%;
     text-align: left!important;
     overflow-y: scroll;
     background-color: #fff;
     border-radius: 0.5rem;
+}
+
+.customFields {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+.sortButton {
+    width: 4rem;
+    height: 2rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.sortButton:hover {
+    background-color: #8AAE5C;
+}
+
+.sortButton:active {
+    background-color: #505050;
+}
+
+.sortText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Lato', sans-serif;
+    color: #505050;
+    letter-spacing: 0.25rem;
+    font-size: calc((1.5vh + 1.5vw) / 2);
+    font-weight: 600;
+}
+
+.filterInput {
+    width: 6rem;
+    height: 2rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    text-align: center;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    color: #505050;
+
 }

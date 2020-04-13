@@ -18,13 +18,20 @@ import {
 import StatElement from '../StatElement';
 
 class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
+    private currentSelectedCountryCode = "";
+
     componentDidMount() {
         this.props.getGlobalDetails();
     }
 
     componentDidUpdate() {
-        if (this.props.selectedCountryCode) {
+        if ((this.props.selectedCountryCode === "Earth") && (this.currentSelectedCountryCode !== "Earth")) {
+            this.props.getGlobalDetails();
+            this.currentSelectedCountryCode = this.props.selectedCountryCode;
+        }
+        else if (this.props.selectedCountryCode !== this.currentSelectedCountryCode) {
             this.props.getCountryDetails(this.props.selectedCountryCode);
+            this.currentSelectedCountryCode = this.props.selectedCountryCode;
         }
     }
 

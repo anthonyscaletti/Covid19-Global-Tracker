@@ -4,5 +4,6 @@ export const configuration = {
     titleColor: "#505050",
     confirmedPlot: "red",
     recoveredPlot: "green",
-    deathPlot: "black"
+    deathPlot: "black",
+    nodeHover: "#8AAE5C"
 }
