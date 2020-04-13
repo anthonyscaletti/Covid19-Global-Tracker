@@ -6,9 +6,27 @@ import { getGlobalSummary, setSelectedCountryCode } from '../../actions/covidSum
 import { ICountrySummaryData, ICountryData, ISummaryState, IAppState } from '../../store/types/types';
 import CountryNode from '../CountryNode';
 
+export enum sortStatus {
+    none = 0,
+    asc = 1,
+    desc = 2
+}
+
 class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
+    private localCountries = [] as ICountrySummaryData[];
+    private localCountriesSortedAsc = [] as ICountrySummaryData[];
+    private localCountriesSortedDesc = [] as ICountrySummaryData[];
+
     componentDidMount() {
         this.props.getGlobalSummary();
+    }
+
+    componentDidUpdate() {
+        if (this.props.countries && !this.localCountries.length) {
+            this.localCountries = this.props.countries.slice(0);
+            this.localCountriesSortedAsc = this.sortCountries(this.localCountries);
+            this.localCountriesSortedDesc = this.sortCountries(this.localCountries, true);
+        }
     }
 
     countryNodeClick = (countryCode: string) => {
@@ -18,6 +36,12 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
         else {
             this.props.setSelectedCountryCode(countryCode);
         }
+    }
+
+    sortCountries = (list: ICountrySummaryData[], isDesc: boolean = false) => {
+        return list.slice().sort((a, b) => {
+            return !isDesc ? (a.confirmed - b.confirmed) : (b.confirmed - a.confirmed);
+        });
     }
 
     renderSummaryHeader = () => {
