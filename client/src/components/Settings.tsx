@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/settings.css';
 
 class Settings extends React.Component {
-    renderSettings = () => {
+    private renderSettings = () => {
         return (
             <img src="../../settingsIcon.png" alt="Settings"/>
         );

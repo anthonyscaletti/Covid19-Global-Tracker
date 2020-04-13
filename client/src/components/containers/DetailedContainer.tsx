@@ -35,7 +35,7 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
         }
     }
 
-    renderDetailedHeader = () => {
+    private renderDetailedHeader = () => {
         return (
             <div className="detailedHeader">
                 <span className="detailedTitle"><h3>Detailed Analysis</h3></span>
@@ -44,7 +44,7 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
         );
     }
 
-    renderLineMarkChart = () => {
+    private renderLineMarkChart = () => {
         return (
             <FlexibleXYPlot 
                 margin={{left: 90, right: 50, bottom: 85}}
@@ -73,7 +73,7 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
         );
     }
 
-    renderChartLabels = () => {
+    private renderChartLabels = () => {
         return (
             <div className="chartLabelContainer">
                 <ChartLabel label="Confirmed" color={configuration.confirmedPlot} />
@@ -83,7 +83,7 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
         );
     }
 
-    renderStatsContent = () => {
+    private renderStatsContent = () => {
         const deathRate = this.props.country.deathRate ? this.props.country.deathRate.toFixed(2) : 0;
         const recoveryRate = this.props.country.recoveryRate ? this.props.country.recoveryRate.toFixed(2) : 0;
         const isEarth: boolean = this.props.country.name === "Earth";
@@ -109,7 +109,7 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
         );
     }
 
-    renderStatsTable = () => {
+    private renderStatsTable = () => {
         const updatedAt: Date = this.props.country.updatedAt ? this.props.country.updatedAt.toString() : "";
         
         return (

@@ -4,7 +4,7 @@ import '../styles/navBar.css';
 import Settings from './Settings';
 
 class NavBar extends React.PureComponent {
-    renderLogo = () => {
+    private renderLogo = () => {
         return (
             <div className="navLogo">
                 <img src="../../BrandLogo1000x1000.png" alt="Logo"/>
@@ -12,7 +12,7 @@ class NavBar extends React.PureComponent {
         );
     }
 
-    renderSettings = () => {
+    private renderSettings = () => {
         return (
             <div className="navSettings">
                 <Settings />

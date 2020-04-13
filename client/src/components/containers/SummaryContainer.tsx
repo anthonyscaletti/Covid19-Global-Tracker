@@ -13,23 +13,45 @@ export enum sortStatus {
 }
 
 class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
-    private localCountries = [] as ICountrySummaryData[];
     private localCountriesSortedAsc = [] as ICountrySummaryData[];
     private localCountriesSortedDesc = [] as ICountrySummaryData[];
+    private sortStatus = sortStatus.none;
 
     componentDidMount() {
         this.props.getGlobalSummary();
     }
 
     componentDidUpdate() {
-        if (this.props.countries && !this.localCountries.length) {
-            this.localCountries = this.props.countries.slice(0);
-            this.localCountriesSortedAsc = this.sortCountries(this.localCountries);
-            this.localCountriesSortedDesc = this.sortCountries(this.localCountries, true);
+        if (this.props.countries && !this.localCountriesSortedAsc.length ) {
+            const localCountries = this.props.countries.slice(0);
+            this.localCountriesSortedAsc = this.sortCountries(localCountries);
+            this.localCountriesSortedDesc = this.sortCountries(localCountries, true);
         }
     }
 
-    countryNodeClick = (countryCode: string) => {
+    private sortCountries = (list: ICountrySummaryData[], isDesc: boolean = false) => {
+        return list.slice().sort((a, b) => {
+            return !isDesc ? (a.confirmed - b.confirmed) : (b.confirmed - a.confirmed);
+        });
+    }
+
+    private sortClick = () => {
+        switch(this.sortStatus) {
+            case sortStatus.none:
+                this.sortStatus = sortStatus.asc;
+                break;
+            case sortStatus.asc:
+                this.sortStatus = sortStatus.desc;
+                break;
+            case sortStatus.desc:
+            default:
+                this.sortStatus = sortStatus.none;
+                break;
+        }
+        this.forceUpdate();
+    }
+
+    private countryNodeClick = (countryCode: string) => {
         if (countryCode === this.props.selectedCountryCode) {
             this.props.setSelectedCountryCode("Earth");
         }
@@ -38,13 +60,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
         }
     }
 
-    sortCountries = (list: ICountrySummaryData[], isDesc: boolean = false) => {
-        return list.slice().sort((a, b) => {
-            return !isDesc ? (a.confirmed - b.confirmed) : (b.confirmed - a.confirmed);
-        });
-    }
-
-    renderSummaryHeader = () => {
+    private renderSummaryHeader = () => {
         return (
             <div className="summaryHeader">
                 <span className="summaryTitle"><h3>Global Confirmed</h3></span>
@@ -53,23 +69,23 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
         );
     }
 
-    renderCustomFields = () => {
+    private renderCustomFields = () => {
         return (
             <div className="customFields">
                 <div className="filterInput">
                     <input className="filterInput" type="text" />
                 </div>
-                <div className="sortButton">
+                <div className="sortButton" onClick={this.sortClick}>
                     <span className="sortText">Sort</span>
                 </div>
             </div>
         );
     }
 
-    renderCountries = () => {
+    private renderCountryList = (list: ICountrySummaryData[] = []) => {
         return (
             <>
-                {this.props.countries && this.props.countries.map((x: ICountryData) => 
+                {list && list.map((x: ICountryData) => 
                     <CountryNode 
                         key={x.code}
                         country={x.name}
@@ -81,6 +97,17 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
                 )}
             </>
         );
+    }
+
+    private renderCountries = () => {
+        switch(this.sortStatus) {
+            case sortStatus.none:
+                return this.renderCountryList(this.props.countries);
+            case sortStatus.asc:
+                return this.renderCountryList(this.localCountriesSortedAsc);
+            case sortStatus.desc:
+                return this.renderCountryList(this.localCountriesSortedDesc);
+        }
     }
 
     render() {
