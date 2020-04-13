@@ -10,7 +10,7 @@ class MainContainer extends React.PureComponent {
         return (
             <div className="mainContainer">
                 <NavBar />
-                <div className="panelContainer">
+                <div className="panelContainer noSelect">
                     <SummaryContainer />
                     <DetailedContainer />
                 </div>
