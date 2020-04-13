@@ -4,7 +4,8 @@
     padding: 0;
 }
 
-.settingsHeader {
+.settingsHeader, 
+.settingsFooter {
     padding-top: 5%;
     position: relative;
 }
@@ -13,7 +14,8 @@
     margin-top: 10%;
 }
 
-.settingsTitle, 
+.settingsTitle,
+.settingsSignOff, 
 .settingsLabel {
     color: #505050;
     letter-spacing: 0.25rem;
@@ -26,7 +28,7 @@
 }
 
 .datePicker {
-    margin: 2% 0 5% 0;
+    margin: 2% 0 3% 0;
     font-family: 'Lato', sans-serif;
     color: #505050;
 }

@@ -29,6 +29,15 @@ class Settings extends React.Component<IProps> {
         );
     }
 
+    private renderSettingFooter = () => {
+        return (
+            <div className="settingsFooter">
+                <hr className="settingsLine"/>
+                <span className="settingsSignOff"><h6>Developed by Anthony Scaletti</h6></span>
+            </div>
+        );
+    }
+
     private renderSettingsContent = () => {
         return (
             <div className="settingsContent">
@@ -45,6 +54,7 @@ class Settings extends React.Component<IProps> {
             <div>
                 {this.renderSettingsHeader()}
                 {this.renderSettingsContent()}
+                {this.renderSettingFooter()}
             </div>
         );
     }
