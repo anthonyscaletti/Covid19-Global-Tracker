@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.chartLabel {
+    display: flex;
+    flex-direction: row;
+}
+
+.labelBox {
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+}

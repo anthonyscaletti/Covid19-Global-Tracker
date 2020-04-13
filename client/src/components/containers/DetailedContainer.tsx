@@ -6,6 +6,7 @@ import '../../../node_modules/react-vis/dist/style.css';
 import { getCountryDetails } from '../../actions/covidDetailedActions';
 import { ICountryData, IDetailedState, IAppState } from '../../store/types/types';
 import { configuration } from '../../constant/configuration';
+import ChartLabel from '../ChartLabel';
 import { 
     FlexibleXYPlot,
     VerticalGridLines,
@@ -31,31 +32,39 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
 
     renderLineMarkChart = () => {
         return (
-            <div className="lineChart">
-                <FlexibleXYPlot 
-                    margin={{left: 90, right: 50, bottom: 85}}
-                    xType="time"
-                >
-                    <VerticalGridLines />
-                    <HorizontalGridLines />
-                    <XAxis />
-                    <YAxis />
-                    <LineSeries 
-                        data={this.props.country.confirmedTimeline}
-                        curve={'curveMonotoneX'}
-                        color={configuration.confirmedPlot}
-                    />
-                    <LineSeries 
-                        data={this.props.country.recoveredTimeline}
-                        curve={'curveMonotoneX'}
-                        color={configuration.recoveredPlot}
-                    />
-                    <LineSeries 
-                        data={this.props.country.deathTimeline}
-                        curve={'curveMonotoneX'}
-                        color={configuration.deathPlot}
-                    />
-                </FlexibleXYPlot>
+            <FlexibleXYPlot 
+                margin={{left: 90, right: 50, bottom: 85}}
+                xType="time"
+            >
+                <VerticalGridLines />
+                <HorizontalGridLines />
+                <XAxis />
+                <YAxis />
+                <LineSeries 
+                    data={this.props.country.confirmedTimeline}
+                    curve={'curveMonotoneX'}
+                    color={configuration.confirmedPlot}
+                />
+                <LineSeries 
+                    data={this.props.country.recoveredTimeline}
+                    curve={'curveMonotoneX'}
+                    color={configuration.recoveredPlot}
+                />
+                <LineSeries 
+                    data={this.props.country.deathTimeline}
+                    curve={'curveMonotoneX'}
+                    color={configuration.deathPlot}
+                />
+            </FlexibleXYPlot>
+        );
+    }
+
+    renderChartLabels = () => {
+        return (
+            <div className="chartLabelContainer">
+                <ChartLabel label="Confirmed" color={configuration.confirmedPlot} />
+                <ChartLabel label="Recovered" color={configuration.recoveredPlot} />
+                <ChartLabel label="Death" color={configuration.deathPlot} />
             </div>
         );
     }
@@ -64,7 +73,10 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
         return (
             <div className="detailedContainer">
                 {this.renderDetailedHeader()}
-                {this.renderLineMarkChart()}
+                <div className="lineChart">
+                    {this.renderLineMarkChart()}
+                    {this.renderChartLabels()}
+                </div>
             </div>
         );
     }

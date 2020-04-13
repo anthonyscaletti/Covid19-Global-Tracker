@@ -36,8 +36,9 @@
     border-radius: 0.5rem;
 }
 
-.labelContainer {
+.chartLabelContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    transform: translateY(-275%);
 }
