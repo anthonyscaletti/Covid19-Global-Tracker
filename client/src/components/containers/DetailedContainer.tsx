@@ -77,6 +77,8 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
                     {this.renderLineMarkChart()}
                     {this.renderChartLabels()}
                 </div>
+                <div className="statsTable">
+                </div>
             </div>
         );
     }
