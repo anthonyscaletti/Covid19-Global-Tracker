@@ -135,8 +135,8 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
 
 interface IProps  {
     country: ICountryData,
-    getCountryDetails: any,
-    getGlobalDetails: any,
+    getCountryDetails: Function,
+    getGlobalDetails: Function,
     selectedCountryCode: string
 }
 

@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import { connect } from 'react-redux';
 
 import '../../styles/summaryContainer.css';
 import { getGlobalSummary, setSelectedCountryCode } from '../../actions/covidSummaryActions';
-import { ICountrySummaryData, ICountryData, ISummaryState, IAppState } from '../../store/types/types';
+import { ICountrySummaryData, ICountryData, ISummaryState, IAppState, IAction } from '../../store/types/types';
 import CountryNode from '../CountryNode';
 
 class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
     componentDidMount() {
         this.props.getGlobalSummary();
-        this.props.setSelectedCountryCode("us"); //TEST ENTRY
+    }
+
+    countryNodeClick = (countryCode: string) => {
+        this.props.setSelectedCountryCode(countryCode);
     }
 
     renderSummaryHeader = () => {
@@ -30,6 +33,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
                         country={x.name}
                         countryCode={x.code}
                         value={x.confirmed}
+                        onClick={this.countryNodeClick}
                     />
                 )}
             </>
@@ -50,8 +54,8 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
 
 interface IProps  {
     countries: ICountrySummaryData[],
-    getGlobalSummary: any,
-    setSelectedCountryCode: any
+    getGlobalSummary: Function,
+    setSelectedCountryCode: Function
 }
 
 const mapStateToProps = (state: IAppState) => {
