@@ -1,4 +1,4 @@
-import { IAction, ICountrySummaryData, ICountryData } from 'store/types/types';
+import { IAction, ICountrySummaryData } from '../store/types/types';
 
 export const getGlobalSummary = () => {
     return (dispatch: any) => {
@@ -34,5 +34,5 @@ const getModeledData = (res: any) => {
             recovered: country.latest_data.recovered,
             critical: country.latest_data.critical
         } as ICountrySummaryData
-    }) as ICountryData[];
+    }) as ICountrySummaryData[];
 }

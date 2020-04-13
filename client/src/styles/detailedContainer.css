@@ -8,7 +8,7 @@
     height: 80vh;
     margin-top: 2%;
     margin-left: 5%;
-    background-color: #ebe8e6;
+    background-color: #ededed;
     border-radius: 0.5rem;
     box-shadow: 0 0.1rem 0.1rem 0.1rem grey;
     text-align: center;
@@ -26,4 +26,12 @@
 .detailedLine {
     width: 90%;
     margin: 0.8% 5% 0 5%;
+}
+
+.lineChart {
+    width: 80%;
+    height: 50%;
+    margin: 1% 10% 0 10%;
+    background-color: white;
+    border-radius: 0.5rem;
 }

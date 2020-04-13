@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import '../../styles/summaryContainer.css';
 import { getGlobalSummary } from '../../actions/covidSummaryActions';
-import { ICountryData, ISummaryState, IAppState } from '../../store/types/types';
+import { ICountrySummaryData, ICountryData, ISummaryState, IAppState } from '../../store/types/types';
 import CountryNode from '../CountryNode';
 
 class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
@@ -48,7 +48,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
 }
 
 interface IProps  {
-    countries: ICountryData[],
+    countries: ICountrySummaryData[],
     getGlobalSummary: any
 }
 

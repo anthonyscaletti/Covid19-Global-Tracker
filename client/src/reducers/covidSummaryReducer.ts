@@ -1,4 +1,4 @@
-import { IAction, ISummaryState } from 'store/types/types';
+import { IAction, ISummaryState } from '../store/types/types';
 
 const initState = {
     countries: []

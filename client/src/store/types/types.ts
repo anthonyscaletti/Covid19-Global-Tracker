@@ -13,14 +13,14 @@ export interface ISummaryState {
 }
 
 export interface IDetailedState {
-    
+    country: ICountryData
 }
 
 export interface ICountryData {
     name: string,
     code: string,
     population: number,
-    updatedAt: Date,
+    updatedAt: any,
     todayDeaths: number,
     todayConfirmed: number,
     deaths: number,
@@ -30,7 +30,9 @@ export interface ICountryData {
     deathRate: number,
     recoveryRate: number,
     casesPerMillionPop: number,
-    timeline: ICountryData[]
+    confirmedTimeline: IPlotData[],
+    recoveredTimeline: IPlotData[],
+    deathTimeline: IPlotData[]
 }
 
 export interface ICountrySummaryData {
@@ -40,4 +42,9 @@ export interface ICountrySummaryData {
     confirmed: number,
     recovered: number,
     critical: number
+}
+
+export interface IPlotData {
+    x: Date,
+    y: number
 }
