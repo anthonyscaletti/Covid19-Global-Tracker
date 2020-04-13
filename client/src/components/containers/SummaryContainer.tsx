@@ -16,6 +16,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
     private localCountriesSortedAsc = [] as ICountrySummaryData[];
     private localCountriesSortedDesc = [] as ICountrySummaryData[];
     private sortStatus = sortStatus.none;
+    private hamburgerSelected = false;
 
     componentDidMount() {
         this.props.getGlobalSummary();
@@ -60,10 +61,24 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
         }
     }
 
+    private hamburgerClick = () => {
+        this.hamburgerSelected = !this.hamburgerSelected;
+        this.forceUpdate();
+    }
+
+    private renderHamburgerButton = () => {
+        return (
+            <div className="hamburgerButton" onClick={this.hamburgerClick}>
+                <img src="../../../hamburgerIcon.png" alt="hamburger"/>
+            </div>
+        );
+    }
+
     private renderSummaryHeader = () => {
         return (
             <div className="summaryHeader">
                 <span className="summaryTitle"><h3>Global Confirmed</h3></span>
+                {this.renderHamburgerButton()}
                 <hr className="summaryLine"/>
             </div>
         );
@@ -114,7 +129,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
         return (
             <div className="summaryContainer">
                 {this.renderSummaryHeader()}
-                {this.renderCustomFields()}
+                {this.hamburgerSelected && this.renderCustomFields()}
                 <div className="nodeContainer">
                     {this.renderCountries()}
                 </div>

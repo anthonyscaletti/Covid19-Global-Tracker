@@ -15,12 +15,27 @@
 
 .summaryHeader {
     padding-top: 5%;
+    position: relative;
 }
 
 .summaryTitle {
     color: #505050;
     letter-spacing: 0.25rem;
     font-size: calc((1.75vh + 1.75vw) / 2);
+}
+
+.hamburgerButton {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 2rem;
+    height: 2rem;
+    transform: translate(-110%, -50%);
+    cursor: pointer;
+}
+
+.hamburgerButton:active {
+    /* background-color: black; */
 }
 
 .summaryLine {
@@ -31,7 +46,7 @@
 .nodeContainer {
     padding: 5% 0 0 5%;
     margin: 2% 10% 0 6%;
-    height: 60vh;
+    height: 55vh;
     width: 84%;
     text-align: left!important;
     overflow-y: scroll;
