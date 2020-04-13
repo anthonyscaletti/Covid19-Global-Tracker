@@ -12,7 +12,12 @@
     position: relative;
 }
 
-.settingsTitle {
+.settingsContent {
+    margin-top: 10%;
+}
+
+.settingsTitle, 
+.settingsLabel {
     color: #505050;
     letter-spacing: 0.25rem;
     font-size: calc((1.75vh + 1.75vw) / 2);
@@ -21,4 +26,8 @@
 .settingsLine {
     width: 90%;
     margin: 3% 5% 0 5%;
+}
+
+.datePicker {
+    margin: 2% 0 5% 0;
 }

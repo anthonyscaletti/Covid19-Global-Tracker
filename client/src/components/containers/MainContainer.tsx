@@ -7,7 +7,7 @@ import DetailedContainer from './DetailedContainer';
 import Settings from './../Settings';
 
 class MainContainer extends React.PureComponent {
-    private settingsOn = true; //MAKE FALSE
+    private settingsOn = false;
 
     private settingsClick = () => {
         this.settingsOn = !this.settingsOn;
