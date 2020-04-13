@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import '../../styles/detailedContainer.css';
 import '../../../node_modules/react-vis/dist/style.css';
 import { getCountryDetails, getGlobalDetails } from '../../actions/covidDetailedActions';
-import { ICountryData, IDetailedState, IAppState } from '../../store/types/types';
+import { ICountryData, IDetailedState, IAppState, ITimeRange, IPlotData } from '../../store/types/types';
 import { configuration } from '../../constant/configuration';
 import ChartLabel from '../ChartLabel';
 import { 
@@ -44,6 +44,12 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
         );
     }
 
+    private filterTimeRange = (data: IPlotData[]) => {
+        return data.filter((point) => {
+            return (point.x >= this.props.timeRange.start) && (point.x < this.props.timeRange.end);
+        });
+    }
+
     private renderLineMarkChart = () => {
         return (
             <FlexibleXYPlot 
@@ -55,17 +61,17 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
                 <XAxis />
                 <YAxis />
                 <LineSeries 
-                    data={this.props.country.confirmedTimeline}
+                    data={this.filterTimeRange(this.props.country.confirmedTimeline || [])}
                     curve={'curveMonotoneX'}
                     color={configuration.confirmedPlot}
                 />
                 <LineSeries 
-                    data={this.props.country.recoveredTimeline}
+                    data={this.filterTimeRange(this.props.country.recoveredTimeline || [])}
                     curve={'curveMonotoneX'}
                     color={configuration.recoveredPlot}
                 />
                 <LineSeries 
-                    data={this.props.country.deathTimeline}
+                    data={this.filterTimeRange(this.props.country.deathTimeline || [])}
                     curve={'curveMonotoneX'}
                     color={configuration.deathPlot}
                 />
@@ -144,13 +150,15 @@ interface IProps  {
     country: ICountryData,
     getCountryDetails: Function,
     getGlobalDetails: Function,
-    selectedCountryCode: string
+    selectedCountryCode: string,
+    timeRange: ITimeRange
 }
 
 const mapStateToProps = (state: IAppState) => {
     return {
         country: state.detailed.country,
-        selectedCountryCode: state.summary.selectedCountryCode
+        selectedCountryCode: state.summary.selectedCountryCode,
+        timeRange: state.settings.timeRange
     };
 }
 
