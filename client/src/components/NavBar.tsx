@@ -3,7 +3,7 @@ import React from 'react';
 import '../styles/navBar.css';
 import Settings from './Settings';
 
-class NavBar extends React.PureComponent {
+class NavBar extends React.Component<IProps> {
     private renderLogo = () => {
         return (
             <div className="navLogo">
@@ -12,10 +12,10 @@ class NavBar extends React.PureComponent {
         );
     }
 
-    private renderSettings = () => {
+    private renderSettingsIcon = () => {
         return (
-            <div className="navSettings">
-                <Settings />
+            <div className="navSettings" onClick={() => this.props.settingsClick()}>
+                <img src="../../settingsIcon.png" alt="Settings"/>
             </div>
         );
     }
@@ -24,10 +24,14 @@ class NavBar extends React.PureComponent {
         return (
             <div className="navBar">
                 {this.renderLogo()}
-                {this.renderSettings()}
+                {this.renderSettingsIcon()}
             </div>
         );
     }
+}
+
+interface IProps {
+    settingsClick: Function
 }
 
 export default NavBar;

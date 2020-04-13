@@ -9,8 +9,10 @@
     margin-top: 2%;
     background-color: #ededed;
     border-radius: 0.5rem;
+    -webkit-box-shadow: 0 0.1rem 0.1rem 0.1rem grey;
     box-shadow: 0 0.1rem 0.1rem 0.1rem grey;
     text-align: center;
+    z-index: 1;
 }
 
 .summaryHeader {
@@ -28,14 +30,10 @@
     position: absolute;
     top: 50%;
     left: 100%;
-    width: 2rem;
+    width: 2.5vw;
     height: 2rem;
     transform: translate(-110%, -50%);
     cursor: pointer;
-}
-
-.hamburgerButton:active {
-    /* background-color: black; */
 }
 
 .summaryLine {

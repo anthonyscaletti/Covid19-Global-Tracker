@@ -3,3 +3,22 @@
     margin: 0;
     padding: 0;
 }
+
+.settings {
+}
+
+.settingsHeader {
+    padding-top: 5%;
+    position: relative;
+}
+
+.settingsTitle {
+    color: #505050;
+    letter-spacing: 0.25rem;
+    font-size: calc((1.75vh + 1.75vw) / 2);
+}
+
+.settingsLine {
+    width: 90%;
+    margin: 3% 5% 0 5%;
+}

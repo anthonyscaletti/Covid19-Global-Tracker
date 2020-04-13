@@ -8,8 +8,10 @@ img {
     height: 10vh;
     background-color: #ededed;
     border-radius: 0.5rem;
+    -webkit-box-shadow: 0 0.2rem 0.2rem -0.1rem grey;
     box-shadow: 0 0.2rem 0.2rem -0.1rem grey;
     position: relative;
+    z-index: 1;
 }
 
 .navLogo {
@@ -28,4 +30,5 @@ img {
     top: 50%;
     left: 100%;
     transform: translate(-120%, -50%);
+    cursor: pointer;
 }
