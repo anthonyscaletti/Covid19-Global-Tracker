@@ -17,6 +17,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
     private localCountriesSortedDesc = [] as ICountrySummaryData[];
     private sortStatus = sortStatus.none;
     private hamburgerSelected = false;
+    private filterValue = "";
 
     componentDidMount() {
         this.props.getGlobalSummary();
@@ -66,6 +67,11 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
         this.forceUpdate();
     }
 
+    private filterOnChange = (e: any) => {
+        this.filterValue = e.target.value;
+        this.forceUpdate();
+    }
+
     private renderHamburgerButton = () => {
         return (
             <div className="hamburgerButton" onClick={this.hamburgerClick}>
@@ -88,7 +94,11 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
         return (
             <div className="customFields">
                 <div className="filterInput">
-                    <input className="filterInput" type="text" />
+                    <input className="filterInput" 
+                           type="text" 
+                           onChange={this.filterOnChange}
+                           spellCheck="false"
+                    />
                 </div>
                 <div className="sortButton" onClick={this.sortClick}>
                     <span className="sortText">Sort</span>
@@ -97,18 +107,24 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
         );
     }
 
+    private matchFilter = (x: string, y: string) => {
+        return x.toLocaleLowerCase().startsWith(y.toLocaleLowerCase())
+    }
+
     private renderCountryList = (list: ICountrySummaryData[] = []) => {
         return (
             <>
-                {list && list.map((x: ICountryData) => 
-                    <CountryNode 
-                        key={x.code}
-                        country={x.name}
-                        countryCode={x.code}
-                        value={x.confirmed}
-                        onClick={this.countryNodeClick}
-                        selectedCountryCode={this.props.selectedCountryCode}
-                    />
+                {list && list
+                    .filter((x)=> this.matchFilter(x.name, this.filterValue))
+                    .map((x: ICountryData) => 
+                        <CountryNode 
+                            key={x.code}
+                            country={x.name}
+                            countryCode={x.code}
+                            value={x.confirmed}
+                            onClick={this.countryNodeClick}
+                            selectedCountryCode={this.props.selectedCountryCode}
+                        />
                 )}
             </>
         );
