@@ -6,6 +6,7 @@
 .countryNode {
     padding-bottom: 3%;
     cursor: pointer;
+    font-size: calc((1.5vh + 1.5vw) / 2);
 }
 
 .countryNode:hover {

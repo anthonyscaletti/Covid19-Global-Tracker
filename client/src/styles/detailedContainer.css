@@ -21,6 +21,7 @@
 .detailedTitle {
     color: #505050;
     letter-spacing: 0.25rem;
+    font-size: calc((1.75vh + 1.75vw) / 2);
 }
 
 .detailedLine {
@@ -49,6 +50,7 @@
     margin: 3% 10% 0 10%;
     background-color: white;
     border-radius: 0.5rem;
+    font-size: calc((1.5vh + 1.5vw) / 2);
 }
 
 .statsHeader {   
