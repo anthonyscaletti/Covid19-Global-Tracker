@@ -4,9 +4,6 @@
     padding: 0;
 }
 
-.settings {
-}
-
 .settingsHeader {
     padding-top: 5%;
     position: relative;
@@ -30,4 +27,6 @@
 
 .datePicker {
     margin: 2% 0 5% 0;
+    font-family: 'Lato', sans-serif;
+    color: #505050;
 }

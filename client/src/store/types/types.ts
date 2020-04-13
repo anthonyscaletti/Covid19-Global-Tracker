@@ -5,7 +5,8 @@ export interface IAction {
 
 export interface IAppState {
     summary: ISummaryState,
-    detailed: IDetailedState
+    detailed: IDetailedState,
+    settings: ISettingsState
 }
 
 export interface ISummaryState {
@@ -15,6 +16,10 @@ export interface ISummaryState {
 
 export interface IDetailedState {
     country: ICountryData
+}
+
+export interface ISettingsState {
+    timeRange: ITimeRange
 }
 
 export interface ICountryData {
@@ -48,4 +53,9 @@ export interface ICountrySummaryData {
 export interface IPlotData {
     x: Date,
     y: number
+}
+
+export interface ITimeRange {
+    start: Date | Date[],
+    end: Date | Date[]
 }
