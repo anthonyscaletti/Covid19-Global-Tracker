@@ -10,7 +10,7 @@ export const getCountryDetails = (countryCode: string) => {
         .then(res => {
             const action: IAction = {
                 type: "GET_COUNTRY_DETAILS",
-                payload: getModeledData(res)
+                payload: getModeledCountryData(res)
             };
             dispatch(action);
         })
@@ -20,7 +20,27 @@ export const getCountryDetails = (countryCode: string) => {
     }
 }
 
-const getModeledData = (res: any) => {
+export const getGlobalDetails = () => {
+    return (dispatch: any) => {
+        fetch("https://corona-api.com/timeline", {
+            method: "GET",
+            mode: "cors"
+        })
+        .then(res => res.json())
+        .then(res => {
+            const action: IAction = {
+                type: "GET_GLOBAL_DETAILS",
+                payload: getModeledGlobalData(res)
+            };
+            dispatch(action);
+        })
+        .catch(err => {
+            console.log("ERROR: ", err);
+        });
+    }
+}
+
+const getModeledCountryData = (res: any) => {
     if (!res.data) {
         return {} as ICountryData[]
     }
@@ -41,6 +61,28 @@ const getModeledData = (res: any) => {
         deathRate: res.data.latest_data.calculated.death_rate,
         recoveryRate: res.data.latest_data.calculated.recovery_rate,
         casesPerMillionPop: res.data.latest_data.calculated.cases_per_million_population,
+        confirmedTimeline,
+        recoveredTimeline,
+        deathTimeline
+    } as ICountryData;
+}
+
+const getModeledGlobalData = (res: any) => {
+    if (!res.data) {
+        return {} as ICountryData[]
+    }
+
+    const { confirmedTimeline, recoveredTimeline, deathTimeline } = getTimelines(res.data);
+    
+    return {
+        name: "Earth",
+        code: "Earth",
+        updatedAt: new Date(res.data[0].updated_at),
+        todayDeaths: res.data[0].new_deaths,
+        todayConfirmed: res.data[0].new_confirmed,
+        deaths: res.data[0].deaths,
+        confirmed: res.data[0].confirmed,
+        recovered: res.data[0].recovered,
         confirmedTimeline,
         recoveredTimeline,
         deathTimeline

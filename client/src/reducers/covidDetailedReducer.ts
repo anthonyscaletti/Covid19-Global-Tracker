@@ -10,6 +10,10 @@ const covidDetailedReducer = (state: IDetailedState = initState, action: IAction
             return {
                 country: action.payload
             };
+        case "GET_GLOBAL_DETAILS":
+            return {
+                country: action.payload
+            };
         default:
             return state;
     }

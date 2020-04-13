@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import '../../styles/detailedContainer.css';
 import '../../../node_modules/react-vis/dist/style.css';
-import { getCountryDetails } from '../../actions/covidDetailedActions';
+import { getCountryDetails, getGlobalDetails } from '../../actions/covidDetailedActions';
 import { ICountryData, IDetailedState, IAppState } from '../../store/types/types';
 import { configuration } from '../../constant/configuration';
 import ChartLabel from '../ChartLabel';
@@ -19,7 +19,8 @@ import StatElement from '../StatElement';
 
 class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
     componentDidMount() {
-        this.props.getCountryDetails();
+        //this.props.getCountryDetails();
+        this.props.getGlobalDetails();
     }
 
     renderDetailedHeader = () => {
@@ -128,7 +129,8 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
 
 interface IProps  {
     country: ICountryData,
-    getCountryDetails: any
+    getCountryDetails: any,
+    getGlobalDetails: any,
 }
 
 const mapStateToProps = (state: IAppState) => {
@@ -139,7 +141,8 @@ const mapStateToProps = (state: IAppState) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        getCountryDetails: () => dispatch(getCountryDetails("ca"))
+        getCountryDetails: () => dispatch(getCountryDetails("ca")),
+        getGlobalDetails: () => dispatch(getGlobalDetails())
     }
 }
 
