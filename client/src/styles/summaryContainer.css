@@ -30,7 +30,11 @@
 
 .nodeContainer {
     padding: 5% 0 0 5%;
+    margin: 2% 10% 0 6%;
     height: 65vh;
+    width: 84%;
     text-align: left!important;
     overflow-y: scroll;
+    background-color: #fff;
+    border-radius: 0.5rem;
 }

@@ -7,8 +7,9 @@
     padding-bottom: 3%;
     cursor: pointer;
     font-size: calc((1.5vh + 1.5vw) / 2);
+    border-radius: 0.5rem;
 }
 
 .countryNode:hover {
-    background-color: silver;
+    background-color: #8AAE5C;
 }

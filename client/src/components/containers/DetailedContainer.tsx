@@ -149,7 +149,7 @@ const mapStateToProps = (state: IAppState) => {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        getCountryDetails: (countryCode) => dispatch(getCountryDetails(countryCode)),
+        getCountryDetails: (countryCode: string) => dispatch(getCountryDetails(countryCode)),
         getGlobalDetails: () => dispatch(getGlobalDetails())
     }
 }
