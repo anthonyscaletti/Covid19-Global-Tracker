@@ -1,3 +1,4 @@
 /client/node_modules
 /client/dist
 /server/pkg
+/server/bin
