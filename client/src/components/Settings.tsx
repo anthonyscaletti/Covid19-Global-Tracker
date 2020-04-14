@@ -51,7 +51,7 @@ class Settings extends React.Component<IProps> {
 
     private renderSettings = () => {
         return (
-            <div>
+            <div className="settings">
                 {this.renderSettingsHeader()}
                 {this.renderSettingsContent()}
                 {this.renderSettingFooter()}
