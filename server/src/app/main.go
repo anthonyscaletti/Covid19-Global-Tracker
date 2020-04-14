@@ -1,9 +1,9 @@
 package main
 
 import (
-	"webServer"
+	"webserver"
 )
 
 func main() {
-	webServer.LaunchWebServer()
+	webserver.LaunchWebServer()
 }
