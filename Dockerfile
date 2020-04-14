@@ -1,7 +1,7 @@
-FROM golang:alpine
+#First Stage
+FROM golang:alpine AS build-stage
 
-COPY /client/dist /go/dist
-
+COPY /client/dist /go/src/app/dist
 COPY /server/src/webserver /go/src/webserver 
 
 WORKDIR /go/src/app
@@ -12,6 +12,11 @@ RUN go build -o main .
 
 RUN go get -d -v ./...
 RUN go install -v ./...
+
+#Second Stage
+FROM golang:alpine 
+
+COPY --from=build-stage /go/bin /go/bin
 
 EXPOSE 4000
 

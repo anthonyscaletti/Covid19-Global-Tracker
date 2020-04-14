@@ -9,7 +9,7 @@ import (
 
 //LaunchWebServer launches GO Webserver to host Covid19 Global Tracker React application
 func LaunchWebServer() {
-	fs := http.FileServer(http.Dir("../../dist"))
+	fs := http.FileServer(http.Dir("/go/src/app/dist"))
 	defaultPort := "4000"
 
 	http.Handle("/", fs)
