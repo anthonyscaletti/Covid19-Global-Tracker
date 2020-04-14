@@ -1,21 +1,17 @@
 FROM golang:alpine
 
-ENV CGO_ENABLED=0 \
-    GOOS=linux \
-    GOARCH=amd64
+COPY /server/src/webserver /go/src/webserver 
 
-WORKDIR /build
+WORKDIR /go/src/app
 
-COPY . .
-
-WORKDIR /build/server/src/app/
+COPY /server/src/app/main.go .
 
 RUN go build -o main .
 
-# WORKDIR /dist
-
-# RUN cp /build/main .
+RUN go get -d -v ./...
+RUN go install -v ./...
 
 EXPOSE 5000
 
-CMD ["/server/src/app/main"]
+CMD ["app"]
+ENTRYPOINT ["app", "-f=7", "-s=9"]
