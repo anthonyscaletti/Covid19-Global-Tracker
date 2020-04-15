@@ -98,6 +98,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
                            type="text" 
                            onChange={this.filterOnChange}
                            spellCheck="false"
+                           value={this.filterValue}
                     />
                 </div>
                 <div className="sortButton" onClick={this.sortClick}>
