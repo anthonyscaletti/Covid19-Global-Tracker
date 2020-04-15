@@ -13,11 +13,6 @@ RUN go build -o main .
 RUN go get -d -v ./...
 RUN go install -v ./...
 
-EXPOSE 4000
-
-CMD ["app"]
-ENTRYPOINT ["app", "-f=7", "-s=9"]
-
 #Second Stage
 FROM golang:alpine 
 
