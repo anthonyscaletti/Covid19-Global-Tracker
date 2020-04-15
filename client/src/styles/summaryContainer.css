@@ -60,8 +60,8 @@
 }
 
 .sortButton {
-    width: 4rem;
-    height: 2rem;
+    width: calc((6vh + 11vw) / 2);
+    height: calc((2vh + 3vw) / 2);
     background-color: #fff;
     border-radius: 0.5rem;
     text-align: center;
@@ -90,8 +90,8 @@
 }
 
 .filterInput {
-    width: 6rem;
-    height: 2rem;
+    width: calc((6vh + 11vw) / 2);
+    height: calc((2vh + 3vw) / 2);
     background-color: #fff;
     border-radius: 0.5rem;
     text-align: center;
