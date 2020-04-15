@@ -1,0 +1,38 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'test',
+1 verbose cli   '--no-cache' ]
+2 info using npm@6.7.0
+3 info using node@v11.10.1
+4 verbose run-script [ 'pretest', 'test', 'posttest' ]
+5 info lifecycle covid19-global-tracker@1.0.0~pretest: covid19-global-tracker@1.0.0
+6 info lifecycle covid19-global-tracker@1.0.0~test: covid19-global-tracker@1.0.0
+7 verbose lifecycle covid19-global-tracker@1.0.0~test: unsafe-perm in lifecycle true
+8 verbose lifecycle covid19-global-tracker@1.0.0~test: PATH: C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\PROJECTS\Covid19-Global-Tracker\client\node_modules\.bin;C:\Users\Tony Wagdi\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Tony Wagdi\bin;C:\Python27;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\slxScripts.git;C:\Anaconda;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_211\bin;C:\Android\Sdk\platform-tools;C:\Go\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\Tony Wagdi\AppData\Local\Microsoft\WindowsApps;C:\Users\Tony Wagdi\AppData\Local\atom\bin;C:\Users\Tony Wagdi\AppData\Local\Microsoft\WindowsApps;C:\Anaconda\python.exe;C:\Users\Tony Wagdi\AppData\Roaming\npm;C:\Users\Tony Wagdi\go\bin;C:\Program Files\heroku\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+9 verbose lifecycle covid19-global-tracker@1.0.0~test: CWD: C:\PROJECTS\Covid19-Global-Tracker\client
+10 silly lifecycle covid19-global-tracker@1.0.0~test: Args: [ '/d /s /c', 'jest' ]
+11 silly lifecycle covid19-global-tracker@1.0.0~test: Returned: code: 1  signal: null
+12 info lifecycle covid19-global-tracker@1.0.0~test: Failed to exec test script
+13 verbose stack Error: covid19-global-tracker@1.0.0 test: `jest`
+13 verbose stack Exit status 1
+13 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\index.js:301:16)
+13 verbose stack     at EventEmitter.emit (events.js:197:13)
+13 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\lib\spawn.js:55:14)
+13 verbose stack     at ChildProcess.emit (events.js:197:13)
+13 verbose stack     at maybeClose (internal/child_process.js:984:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:265:5)
+14 verbose pkgid covid19-global-tracker@1.0.0
+15 verbose cwd C:\PROJECTS\Covid19-Global-Tracker\client
+16 verbose Windows_NT 10.0.18363
+17 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "test" "--no-cache"
+18 verbose node v11.10.1
+19 verbose npm  v6.7.0
+20 error code ELIFECYCLE
+21 error errno 1
+22 error covid19-global-tracker@1.0.0 test: `jest`
+22 error Exit status 1
+23 error Failed at the covid19-global-tracker@1.0.0 test script.
+23 error This is probably not a problem with npm. There is likely additional logging output above.
+24 verbose exit [ 1, true ]

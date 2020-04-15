@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="statElement"
+>
+  <h5>
+    :
+    <span
+      style={
+        Object {
+          "float": "right",
+        }
+      }
+    />
+  </h5>
+</div>
+`;
