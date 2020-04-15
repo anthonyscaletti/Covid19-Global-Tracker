@@ -32,7 +32,7 @@ const getModeledData = (res: any) => {
         return [] as ICountrySummaryData[]
     }
 
-    return res.data.map((country: any) => {
+    return res.data.sort((a, b) => a.name.localeCompare(b.name)).map((country: any) => {
         return {
             name: country.name,
             code: country.code,
