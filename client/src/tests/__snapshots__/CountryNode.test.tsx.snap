@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="countryNode"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "#8AAE5C",
+    }
+  }
+>
+  <h5>
+    ◉  
+    :
+    <span
+      style={
+        Object {
+          "float": "right",
+          "marginRight": "5%",
+        }
+      }
+    />
+  </h5>
+</div>
+`;

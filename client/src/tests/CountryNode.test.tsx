@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import StatElement from '../components/StatElement';
+import CountryNode from '../components/CountryNode';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<StatElement />)
+    .create(<CountryNode />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

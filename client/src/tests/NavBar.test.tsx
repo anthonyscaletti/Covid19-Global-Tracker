@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import StatElement from '../components/StatElement';
+import NavBar from '../components/NavBar';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<StatElement />)
+    .create(<NavBar />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

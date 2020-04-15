@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="navBar"
+>
+  <div
+    className="navLogo"
+  >
+    <img
+      alt="Logo"
+      src="../../BrandLogo1000x1000.png"
+    />
+  </div>
+  <div
+    className="navSettings"
+    onClick={[Function]}
+  >
+    <img
+      alt="Settings"
+      src="../../settingsIcon.png"
+    />
+  </div>
+</div>
+`;

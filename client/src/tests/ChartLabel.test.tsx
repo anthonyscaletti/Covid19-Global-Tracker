@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import StatElement from '../components/StatElement';
+import ChartLabel from '../components/ChartLabel';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<StatElement />)
+    .create(<ChartLabel />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
