@@ -9,7 +9,7 @@
 }
 
 .labelBox {
-    width: 1rem;
-    height: 1rem;
+    width: calc((1.25vh + 1.5vw) / 2);
+    height: calc((1.25vh + 1.5vw) / 2);
     text-align: center;
 }
