@@ -33,11 +33,9 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
 
         //Get Latest Live Data
         if (this.props.dataFetching) {
-            console.log(1);
             this.beganFetch = true;
         }
         else if (!this.props.dataFetching && this.beganFetch) {
-            console.log(2);
             this.getApiData();
         }
     }
