@@ -26,19 +26,24 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
     }
 
     componentDidUpdate() {
-        this.getApiData();
+        //Get New Selected Country Data
+        if (this.countrySelectedChanged()) {
+            this.getApiData();
+        }
 
         //Get Latest Live Data
         if (this.props.dataFetching) {
+            console.log(1);
             this.beganFetch = true;
         }
         else if (!this.props.dataFetching && this.beganFetch) {
+            console.log(2);
             this.getApiData();
         }
     }
 
     private getApiData = () => {
-        if ((this.props.selectedCountryCode === "Earth") && (this.currentSelectedCountryCode !== "Earth")) {
+        if (this.props.selectedCountryCode === "Earth") {
             this.props.getGlobalDetails();
             this.currentSelectedCountryCode = this.props.selectedCountryCode;
             this.beganFetch = false;
@@ -48,6 +53,13 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
             this.currentSelectedCountryCode = this.props.selectedCountryCode;
             this.beganFetch = false;
         }
+    }
+
+    private countrySelectedChanged = () => {
+        if (this.props.selectedCountryCode !== this.currentSelectedCountryCode) {
+            return true;
+        }
+        return false;
     }
 
     private renderDetailedHeader = () => {
