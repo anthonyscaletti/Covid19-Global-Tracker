@@ -2,7 +2,8 @@ import { IAction, ISummaryState } from '../store/types/types';
 
 const initState = {
     countries: [],
-    selectedCountryCode: ""
+    selectedCountryCode: "",
+    dataFetching: true
 };
 
 const covidSummaryReducer = (state: ISummaryState = initState, action: IAction) => {
@@ -10,12 +11,18 @@ const covidSummaryReducer = (state: ISummaryState = initState, action: IAction) 
         case "GET_GLOBAL_SUMMARY":
             return {
                 ...state,
-                countries: action.payload
+                countries: action.payload,
+                dataFetching: false
             };
         case "SET_SELECTED_COUNTRY_CODE":
             return {
                 ...state,
                 selectedCountryCode: action.payload
+            };
+        case "SET_DATA_FETCHING":
+            return {
+                ...state,
+                dataFetching: action.payload
             };
         default:
             return state;

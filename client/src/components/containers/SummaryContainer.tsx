@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import '../../styles/summaryContainer.css';
-import { getGlobalSummary, setSelectedCountryCode } from '../../actions/covidSummaryActions';
+import { getGlobalSummary, setSelectedCountryCode, setDataFetching } from '../../actions/covidSummaryActions';
 import { ICountrySummaryData, ISummaryState, IAppState } from '../../store/types/types';
 import CountryNode from '../CountryNode';
 
@@ -18,17 +18,43 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
     private sortStatus = sortStatus.none;
     private hamburgerSelected = false;
     private filterValue = "";
+    private liveUpdate = false;
+    private beganFetch = true;
 
     componentDidMount() {
         this.props.getGlobalSummary();
+        this.startLiveUpdateCountdown();
     }
 
     componentDidUpdate() {
-        if (this.props.countries && !this.localCountriesSortedAsc.length ) {
-            const localCountries = this.props.countries.slice(0);
-            this.localCountriesSortedAsc = this.sortCountries(localCountries);
-            this.localCountriesSortedDesc = this.sortCountries(localCountries, true);
+        if (this.beganFetch && !this.props.dataFetching) {
+            this.modelData();
+            this.beganFetch = false;
         }
+
+        //Live Update Every 10m When API Data Refreshes
+        if (this.liveUpdate) {
+            this.startLiveUpdateCountdown();
+        }
+    }
+
+    private startLiveUpdateCountdown = () => {
+        this.liveUpdate = false;
+
+        setTimeout(() => {
+            //Retrive New Data
+            this.props.setDataFetching();
+            this.props.getGlobalSummary();
+            //Track Period Between Data Fetch and Retrieval
+            this.liveUpdate = true;
+            this.beganFetch = true;
+        }, 600000);
+    }
+
+    private modelData = () => {
+        const localCountries = this.props.countries.slice(0);
+        this.localCountriesSortedAsc = this.sortCountries(localCountries);
+        this.localCountriesSortedDesc = this.sortCountries(localCountries, true);
     }
 
     private sortCountries = (list: ICountrySummaryData[], isDesc: boolean = false) => {
@@ -158,21 +184,25 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
 interface IProps  {
     countries: ICountrySummaryData[],
     selectedCountryCode: string,
+    dataFetching: boolean,
     getGlobalSummary: Function,
-    setSelectedCountryCode: Function
+    setSelectedCountryCode: Function,
+    setDataFetching: Function
 }
 
 const mapStateToProps = (state: IAppState) => {
     return {
         countries: state.summary.countries,
-        selectedCountryCode: state.summary.selectedCountryCode
+        selectedCountryCode: state.summary.selectedCountryCode,
+        dataFetching: state.summary.dataFetching
     };
 }
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
         getGlobalSummary: () => dispatch(getGlobalSummary()),
-        setSelectedCountryCode: (countryCode: string) => dispatch(setSelectedCountryCode(countryCode))
+        setSelectedCountryCode: (countryCode: string) => dispatch(setSelectedCountryCode(countryCode)),
+        setDataFetching: () => dispatch(setDataFetching()),
     }
 }
 

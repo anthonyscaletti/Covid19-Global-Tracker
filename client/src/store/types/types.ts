@@ -11,7 +11,8 @@ export interface IAppState {
 
 export interface ISummaryState {
     countries: ICountryData[],
-    selectedCountryCode: string
+    selectedCountryCode: string,
+    dataFetching: boolean
 }
 
 export interface IDetailedState {

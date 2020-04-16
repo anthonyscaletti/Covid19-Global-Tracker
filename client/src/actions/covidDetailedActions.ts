@@ -1,4 +1,4 @@
-import { IAction, ICountryData } from '../store/types/types';
+import { IAction, ICountryData, IPlotData } from '../store/types/types';
 
 export const getCountryDetails = (countryCode: string) => {
     return (dispatch: any) => {
@@ -91,9 +91,9 @@ const getModeledGlobalData = (res: any) => {
 }
 
 const getTimelines = (timeline: any[]) => {
-    let confirmedTimeline = [];
-    let recoveredTimeline = [];
-    let deathTimeline = [];
+    let confirmedTimeline: IPlotData[] = [];
+    let recoveredTimeline: IPlotData[] = [];
+    let deathTimeline: IPlotData[] = [];
 
     timeline.reverse().forEach((country) => {
         confirmedTimeline.push({

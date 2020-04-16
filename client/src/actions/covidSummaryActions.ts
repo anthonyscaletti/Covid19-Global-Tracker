@@ -27,12 +27,19 @@ export const setSelectedCountryCode = (countryCode: string) => {
     } as IAction;
 }
 
+export const setDataFetching = () => {
+    return {
+        type: "SET_DATA_FETCHING",
+        payload: true
+    } as IAction;
+}
+
 const getModeledData = (res: any) => {
     if (!res.data) {
         return [] as ICountrySummaryData[]
     }
 
-    return res.data.sort((a, b) => a.name.localeCompare(b.name)).map((country: any) => {
+    return res.data.sort((a: any, b: any) => a.name.localeCompare(b.name)).map((country: any) => {
         return {
             name: country.name,
             code: country.code,
