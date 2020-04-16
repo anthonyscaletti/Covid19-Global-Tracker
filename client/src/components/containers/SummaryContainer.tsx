@@ -1,9 +1,9 @@
-import React, { Dispatch } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
 import '../../styles/summaryContainer.css';
 import { getGlobalSummary, setSelectedCountryCode } from '../../actions/covidSummaryActions';
-import { ICountrySummaryData, ICountryData, ISummaryState, IAppState } from '../../store/types/types';
+import { ICountrySummaryData, ISummaryState, IAppState } from '../../store/types/types';
 import CountryNode from '../CountryNode';
 
 export enum sortStatus {
@@ -117,7 +117,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
             <>
                 {list && list
                     .filter((x)=> this.matchFilter(x.name, this.filterValue))
-                    .map((x: ICountryData) => 
+                    .map((x: ICountrySummaryData) => 
                         <CountryNode 
                             key={x.code}
                             country={x.name}

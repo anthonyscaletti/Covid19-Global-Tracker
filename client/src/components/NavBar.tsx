@@ -1,7 +1,6 @@
 import React from 'react';
 
 import '../styles/navBar.css';
-import Settings from './Settings';
 
 class NavBar extends React.Component<IProps> {
     private renderLogo = () => {
