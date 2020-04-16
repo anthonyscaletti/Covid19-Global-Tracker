@@ -19,19 +19,34 @@ import StatElement from '../StatElement';
 
 class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
     private currentSelectedCountryCode = "";
+    private beganFetch = false;
 
     componentDidMount() {
         this.props.getGlobalDetails();
     }
 
     componentDidUpdate() {
+        this.getApiData();
+
+        //Get Latest Live Data
+        if (this.props.dataFetching) {
+            this.beganFetch = true;
+        }
+        else if (!this.props.dataFetching && this.beganFetch) {
+            this.getApiData();
+        }
+    }
+
+    private getApiData = () => {
         if ((this.props.selectedCountryCode === "Earth") && (this.currentSelectedCountryCode !== "Earth")) {
             this.props.getGlobalDetails();
             this.currentSelectedCountryCode = this.props.selectedCountryCode;
+            this.beganFetch = false;
         }
         else if (this.props.selectedCountryCode !== this.currentSelectedCountryCode) {
             this.props.getCountryDetails(this.props.selectedCountryCode);
             this.currentSelectedCountryCode = this.props.selectedCountryCode;
+            this.beganFetch = false;
         }
     }
 
@@ -151,6 +166,7 @@ interface IProps  {
     getCountryDetails: Function,
     getGlobalDetails: Function,
     selectedCountryCode: string,
+    dataFetching: boolean,
     timeRange: ITimeRange
 }
 
@@ -158,6 +174,7 @@ const mapStateToProps = (state: IAppState) => {
     return {
         country: state.detailed.country,
         selectedCountryCode: state.summary.selectedCountryCode,
+        dataFetching: state.summary.dataFetching,
         timeRange: state.settings.timeRange
     };
 }

@@ -48,7 +48,7 @@ class SummaryContainer extends React.PureComponent<IProps, ISummaryState> {
             //Track Period Between Data Fetch and Retrieval
             this.liveUpdate = true;
             this.beganFetch = true;
-        }, 600000);
+        }, 5000);
     }
 
     private modelData = () => {
