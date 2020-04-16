@@ -89,16 +89,19 @@ class DetailedContainer extends React.PureComponent<IProps, IDetailedState> {
                     data={this.filterTimeRange(this.props.country.confirmedTimeline || [])}
                     curve={'curveMonotoneX'}
                     color={configuration.confirmedPlot}
+                    animation
                 />
                 <LineSeries 
                     data={this.filterTimeRange(this.props.country.recoveredTimeline || [])}
                     curve={'curveMonotoneX'}
                     color={configuration.recoveredPlot}
+                    animation
                 />
                 <LineSeries 
                     data={this.filterTimeRange(this.props.country.deathTimeline || [])}
                     curve={'curveMonotoneX'}
                     color={configuration.deathPlot}
+                    animation
                 />
             </FlexibleXYPlot>
         );
